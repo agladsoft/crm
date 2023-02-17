@@ -66,8 +66,6 @@ class RnStagehistories(object):
         """
         df: DataFrame = read_csv(self.filename, low_memory=False, dtype=str, delimiter=';')
         df.replace({np.NAN: None}, inplace=True)
-        df = df.dropna(axis=0, how='all')
-        df = df.dropna(axis=1, how='all')
         self.rename_columns(df)
         return df.to_dict('records')
 
@@ -82,7 +80,7 @@ class RnStagehistories(object):
                 elif key in self.LIST_OF_DATE_TYPE:
                     data[key] = self.convert_format_date(value)
                 elif key in self.LIST_OF_BOOL_TYPE:
-                    data[key] = value
+                    data[key] = eval(value)
                 elif key in self.LIST_OF_INT_TYPE:
                     data[key] = self.convert_to_int(value)
 
