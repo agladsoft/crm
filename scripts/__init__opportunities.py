@@ -1,6 +1,6 @@
 
 HEADERS_ENG: dict = {
-    ("@odata.etag",): "@odata.etag",
+    ("@odata.etag",): "odata.etag",
     ("kc_directioncode",): "kc_directioncode",
     ("prioritycode",): "prioritycode",
     ("completeinternalreview",): "completeinternalreview",

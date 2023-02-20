@@ -1,6 +1,6 @@
 
 HEADERS_ENG: dict = {
-    ("@odata.etag",): "@odata.etag",
+    ("@odata.etag",): "odata.etag",
     ("systemuserid",): "systemuserid",
     ("accessmode",): "accessmode",
     ("kc_guidisr",): "kc_guidisr",

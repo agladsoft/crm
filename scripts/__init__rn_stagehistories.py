@@ -1,6 +1,6 @@
 
 HEADERS_ENG: dict = {
-    ("@odata.etag",): "@odata.etag",
+    ("@odata.etag",): "odata.etag",
     ("timezoneruleversionnumber",): "timezoneruleversionnumber",
     ("versionnumber",): "versionnumber",
     ("_owningbusinessunit_value",): "_owningbusinessunit_value",
