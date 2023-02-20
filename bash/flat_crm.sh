@@ -10,7 +10,7 @@ declare -a TablesArray=(
     "systemusers"
 )
 
-csv_path="${XL_IDP_PATH_CRM}/crm"
+csv_path="${XL_IDP_PATH_CRM}"
 
 done_path="${csv_path}"/done
 if [ ! -d "$done_path" ]; then
