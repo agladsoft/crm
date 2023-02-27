@@ -7,4 +7,4 @@ if logger.hasHandlers():
 logger.addHandler(console)
 logger.setLevel(logging.INFO)
 
-date_formats: tuple = ("%Y-%m-%dT%H:%M:%SZ",)
+date_formats: tuple = ("%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%dT%H:%M:%S%z")
