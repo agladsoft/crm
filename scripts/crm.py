@@ -20,7 +20,7 @@ class CrmClient(object):
 
 @dataclass
 class RemoteEntity(ABC):
-    data_root_path = os.getenv('XL_IDP_ROOT_CRM')
+    data_root_path = os.environ.get("XL_IDP_ROOT_CRM")
     crm_client: 'CrmClient'
 
     @property
