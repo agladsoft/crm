@@ -10,6 +10,7 @@ from __init__ import *
 from typing import Generator
 from pandas import DataFrame, read_csv
 from __init__rn_stagehistories import *
+from clickhouse_connect import get_client
 
 
 class RnStagehistories(object):
@@ -22,6 +23,15 @@ class RnStagehistories(object):
         self.LIST_OF_BOOL_TYPE: list = list_of_bool_type
         self.LIST_OF_INT_TYPE: list = list_of_int_type
         self.LIST_OF_DATE_TYPE: list = list_of_date_type
+
+    @staticmethod
+    def delete_all_data_from_db(file):
+        """
+        Delete all data from database that update data.
+        """
+        client = get_client(host='clickhouse', database='crm', username='admin', password='6QVnYsC4iSzz')
+        client.query(f"ALTER TABLE {os.path.basename(file).replace('.py', '')} DELETE WHERE versionnumber is not null")
+        client.close()
 
     @staticmethod
     def divide_chunks(list_data: list, chunk: int) -> Generator:
@@ -93,16 +103,18 @@ class RnStagehistories(object):
         with open(f"{output_file_path}", 'w', encoding='utf-8') as f:
             json.dump(chunk_data, f, ensure_ascii=False, indent=4)
 
+    def main(self, file) -> None:
+        parsed_data: list = self.convert_csv_to_dict()
+        divided_parsed_data: list = list(self.divide_chunks(parsed_data, 50000))
+        self.delete_all_data_from_db(file)
+        for index, chunk_parsed_data in enumerate(divided_parsed_data):
+            for dict_data in chunk_parsed_data:
+                self.change_type(dict_data)
+            self.save_data_to_file(index, chunk_parsed_data)
+
 
 if __name__ == "__main__":
-    input_file_path: str = os.path.abspath(sys.argv[1])
-    output_folder: str = sys.argv[2]
-    rn_stagehistories: RnStagehistories = RnStagehistories(input_file_path, output_folder, HEADERS_ENG,
+    rn_stagehistories: RnStagehistories = RnStagehistories(os.path.abspath(sys.argv[1]), sys.argv[2], HEADERS_ENG,
                                                            LIST_OF_FLOAT_TYPE, LIST_OF_BOOL_TYPE, LIST_OF_INT_TYPE,
                                                            LIST_OF_DATE_TYPE)
-    parsed_data: list = rn_stagehistories.convert_csv_to_dict()
-    divided_parsed_data: list = list(rn_stagehistories.divide_chunks(parsed_data, 50000))
-    for index, chunk_parsed_data in enumerate(divided_parsed_data):
-        for dict_data in chunk_parsed_data:
-            rn_stagehistories.change_type(dict_data)
-        rn_stagehistories.save_data_to_file(index, chunk_parsed_data)
+    rn_stagehistories.main(__file__)
