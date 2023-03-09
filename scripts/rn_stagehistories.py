@@ -29,7 +29,7 @@ class RnStagehistories(object):
         """
         Delete all data from database that update data.
         """
-        client = get_client(host='clickhouse', database='crm', username='default', password='6QVnYsC4iSzz')
+        client = get_client(host='clickhouse', database='crm', username='admin', password='6QVnYsC4iSzz')
         client.query(f"ALTER TABLE {os.path.basename(file).replace('.py', '')} DELETE WHERE versionnumber is not null")
         client.close()
 
