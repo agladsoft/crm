@@ -1,3 +1,4 @@
+import os
 import csv
 import requests
 from abc import ABC
@@ -17,7 +18,7 @@ class CrmClient(object):
 
 @dataclass
 class RemoteEntity(ABC):
-    data_root_path = "crm"
+    data_root_path = f"{os.environ['XL_IDP_PATH_CRM']}"
     crm_client: 'CrmClient'
 
     @property
