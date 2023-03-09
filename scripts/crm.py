@@ -2,6 +2,8 @@ import os
 import csv
 import requests
 from abc import ABC
+from pathlib import Path
+from dotenv import load_dotenv
 from dataclasses import dataclass
 from requests_ntlm import HttpNtlmAuth
 
@@ -18,7 +20,7 @@ class CrmClient(object):
 
 @dataclass
 class RemoteEntity(ABC):
-    data_root_path = "/home/ruscon/sambashare/crm"
+    data_root_path = os.getenv('XL_IDP_ROOT_CRM')
     crm_client: 'CrmClient'
 
     @property
@@ -151,6 +153,8 @@ class Systemuser(RemoteEntity):
 
 
 def main():
+    dotenv_path = Path('/home/ruscon/docker_project/.env')
+    load_dotenv(dotenv_path=dotenv_path)
     print_keys = False
     crm_cient = CrmClient()
     StageHistory(crm_cient).save_to_csv(print_keys=print_keys)
