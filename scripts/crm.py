@@ -18,7 +18,7 @@ class CrmClient(object):
 
 @dataclass
 class RemoteEntity(ABC):
-    data_root_path = f"{os.environ['XL_IDP_PATH_CRM']}"
+    data_root_path = "/home/ruscon/sambashare/crm"
     crm_client: 'CrmClient'
 
     @property
