@@ -17,7 +17,7 @@ class CrmClient(object):
 
 @dataclass
 class RemoteEntity(ABC):
-    data_root_path = "/home/ruscon/sambashare/crm"
+    data_root_path = "/home/ruscon/sambashare/crm/done"
     crm_client: 'CrmClient'
 
     @property
