@@ -110,6 +110,7 @@ class RnStagehistories(object):
         for index, chunk_parsed_data in enumerate(divided_parsed_data):
             for dict_data in chunk_parsed_data:
                 self.change_type(dict_data)
+                dict_data['updates'] = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
             self.save_data_to_file(index, chunk_parsed_data)
 
 
