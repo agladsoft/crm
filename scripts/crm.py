@@ -1,6 +1,7 @@
 import csv
 import requests
 from abc import ABC
+from pathlib import Path
 from dataclasses import dataclass
 from requests_ntlm import HttpNtlmAuth
 
@@ -48,6 +49,11 @@ class RemoteEntity(ABC):
             else:
                 dto_row[field_dto] = self.modifier(dto_row[field_dto])
         return dto_row
+
+    def move_files(self):
+        for each_file in Path(self.data_root_path).glob('*.csv'):
+            trg_path = each_file.parent.parent
+            each_file.rename(trg_path.joinpath(each_file.name))
 
     def save_to_csv(self, all_fields=False, next_link=None, write_mode='w', print_keys=False):
         # sourcery skip: raise-specific-error
@@ -152,12 +158,30 @@ class Systemuser(RemoteEntity):
 def main():
     print_keys = False
     crm_cient = CrmClient()
-    StageHistory(crm_cient).save_to_csv(print_keys=print_keys)
-    GapPowerbiOption(crm_cient).save_to_csv(print_keys=print_keys)
-    Lead(crm_cient).save_to_csv(print_keys=print_keys)
-    Interview(crm_cient).save_to_csv(print_keys=print_keys)
-    Opportunity(crm_cient).save_to_csv(print_keys=print_keys)
-    Systemuser(crm_cient).save_to_csv(print_keys=print_keys)
+
+    stage_history = StageHistory(crm_cient)
+    stage_history.save_to_csv(print_keys=print_keys)
+    stage_history.move_files()
+
+    gap_powerbi_option = GapPowerbiOption(crm_cient)
+    gap_powerbi_option.save_to_csv(print_keys=print_keys)
+    gap_powerbi_option.move_files()
+
+    lead = Lead(crm_cient)
+    lead.save_to_csv(print_keys=print_keys)
+    lead.move_files()
+
+    interview = Interview(crm_cient)
+    interview.save_to_csv(print_keys=print_keys)
+    interview.move_files()
+
+    opportunity = Opportunity(crm_cient)
+    opportunity.save_to_csv(print_keys=print_keys)
+    opportunity.move_files()
+
+    systemuser = Systemuser(crm_cient)
+    systemuser.save_to_csv(print_keys=print_keys)
+    systemuser.move_files()
 
 
 if __name__ == "__main__":
