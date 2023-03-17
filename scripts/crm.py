@@ -1,3 +1,4 @@
+import os
 import csv
 import requests
 from abc import ABC
@@ -60,21 +61,24 @@ class RemoteEntity(ABC):
         url = next_link or self.url
         r = requests.get(url, auth=self.crm_client.get_auth())
         if r.status_code != 200:
-            raise Exception(f"Код ответа {r.status_code}")
+            raise Exception(f'Код ответа {r.status_code}')
         data = r.json()
         if 'value' not in data:
-            raise Exception("В ответе нет ключа value")
+            raise Exception('В ответе нет ключа value')
         value = data['value']
         keys = value[0].keys()
         if print_keys:
             print(keys)
         header = keys if not self.header or all_fields else self.header
+        if write_mode == 'w' and os.path.exists(self.csv_file):
+            os.remove(self.csv_file)
         with open(self.csv_file, write_mode, encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, header, delimiter=";", quoting=csv.QUOTE_NONNUMERIC)
             if write_mode == 'w':
                 w.writeheader()
             for row in value:
                 w.writerow(self.get_dto_row(row, header))
+            f.close()
         if "@odata.nextLink" in data:
             self.save_to_csv(all_fields, data["@odata.nextLink"], 'a', print_keys)
 
@@ -155,6 +159,25 @@ class Systemuser(RemoteEntity):
             )
 
 
+class Businessunits(RemoteEntity):
+    @property
+    def pattern(self):
+        return 'businessunits'
+
+    @property
+    def header(self):
+        return (
+            '@odata.etag', 'inheritancemask', 'address2_addressid', 'modifiedon', 'createdon', 'versionnumber', 'isdisabled', 'name', '_organizationid_value', 'businessunitid', 'address1_addressid', 'address1_line2',
+            'address1_stateorprovince', 'address1_addresstypecode', 'address2_addresstypecode', '_modifiedonbehalfby_value', 'creditlimit', 'exchangerate', 'emailaddress', '_modifiedby_value', 'stockexchange',
+            'address1_telephone1', 'address2_shippingmethodcode', 'address2_country', 'address2_name', 'tickersymbol', 'address2_utcoffset', 'address2_latitude', '_parentbusinessunitid_value', 'address2_fax',
+            'importsequencenumber', 'picture', 'address1_county', 'address2_line1', '_createdonbehalfby_value', 'address2_telephone2', 'divisionname', 'websiteurl', 'address2_telephone1', 'address2_postofficebox',
+            'fileasname', 'address1_telephone3', 'address1_line1', 'address2_line3', 'address1_city', 'utcoffset', 'address2_longitude', 'address1_shippingmethodcode', 'address1_latitude', 'costcenter',
+            'address1_utcoffset', 'address2_line2', 'address1_fax', 'address1_name', 'address1_line3', 'address2_telephone3', 'address1_longitude', 'address2_upszone', '_calendarid_value', 'address2_county',
+            'address2_city', 'address1_postofficebox', 'workflowsuspended', 'address1_postalcode', '_createdby_value', '_transactioncurrencyid_value', 'address1_telephone2', 'address1_upszone', 'address2_stateorprovince',
+            'overriddencreatedon', 'address2_postalcode', 'address1_country', 'description', 'disabledreason', 'ftpsiteurl'
+            )
+
+
 def main():
     print_keys = False
     crm_cient = CrmClient()
@@ -182,6 +205,10 @@ def main():
     systemuser = Systemuser(crm_cient)
     systemuser.save_to_csv(print_keys=print_keys)
     systemuser.move_files()
+
+    businessunits = Businessunits(crm_cient)
+    businessunits.save_to_csv(print_keys=print_keys)
+    businessunits.move_files()
 
 
 if __name__ == "__main__":
