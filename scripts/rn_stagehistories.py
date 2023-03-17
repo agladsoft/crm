@@ -104,6 +104,9 @@ class RnStagehistories(object):
             json.dump(chunk_data, f, ensure_ascii=False, indent=4)
 
     def main(self, file) -> None:
+        """
+        Parse data from CSV file. And split it by chunks.
+        """
         parsed_data: list = self.convert_csv_to_dict()
         divided_parsed_data: list = list(self.divide_chunks(parsed_data, 50000))
         self.delete_all_data_from_db(file)
