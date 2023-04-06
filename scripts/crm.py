@@ -41,7 +41,7 @@ class RemoteEntity(ABC):
         return dto_row
 
     def move_files(self):
-        for each_file in Path(self.data_root_path).glob('*.csv'):
+        for each_file in Path(self.data_root_path).glob(f'{self.pattern}.csv'):
             trg_path = each_file.parent.parent
             each_file.rename(trg_path.joinpath(each_file.name))
 
