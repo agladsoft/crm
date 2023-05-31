@@ -152,6 +152,44 @@ class Businessunits(RemoteEntity):
             'overriddencreatedon', 'address2_postalcode', 'address1_country', 'description', 'disabledreason', 'ftpsiteurl'
             )
 
+class Account(RemoteEntity):
+    @property
+    def pattern(self):
+        return 'accounts'
+    @property
+    def header(self):
+        return (
+         '@odata.etag', 'kc_portservices', 'kc_customsservices', 'kc_provider', 'address2_addresstypecode', 'merged', 'rn_regnom', 'kc_lastinterviewdate_state', 'rn_taxnumber',
+         'kc_competitor', 'territorycode', 'emailaddress1', 'exchangerate', 'rn_getbyinn', 'rn_projects', 'name', 'websiteurl', 'kc_auto_state', 'kc_sendtoukt', 'kc_customsservices_date',
+         '_owningbusinessunit_value', '_owninguser_value', '_primarycontactid_value', 'address2_line1', 'address1_composite', 'donotpostalmail', 'accountratingcode', 'marketingonly',
+         'rn_number', 'donotphone', 'preferredcontactmethodcode', '_ownerid_value', 'accountclassificationcode', 'kc_firstsalesorderdate_state', 'customersizecode',
+         'kc_offdockterminalservices_state', 'kc_quantityinterview_state', 'rn_clientmonitoring', 'kc_firstsalesorderdate_date', 'trx_phone_calls_recording', 'donotemail',
+         'kc_train_state', 'address2_shippingmethodcode', 'kc_auto', 'kc_portservices_state', 'address2_freighttermscode', 'statuscode', 'createdon', 'rn_lastsalesorderdate_date',
+         '_originatingleadid_value', 'kc_line', 'rn_haslead', 'kc_internationalcarriage', 'donotsendmm', 'donotfax', 'kc_opfcode', 'donotbulkpostalmail', 'versionnumber',
+         'openrevenue_date', 'address1_line1', 'kc_train_date', 'modifiedon', 'creditonhold', 'telephone1', 'kc_train', 'kc_ruscon', '_transactioncurrencyid_value',
+         'kc_internationalcarriage_state', 'accountid', 'kc_auto_date', 'kc_internationalcarriage_date', 'kc_customsservices_state', '_modifiedby_value',
+         'kc_quantityinterview_date', 'followemail', 'businesstypecode', '_createdby_value', 'kc_offdockterminalservices_date', 'kc_fullname', 'donotbulkemail',
+         'rn_lastsalesorderdate_state', 'kc_fullnameeng', 'kc_quantityinterview', 'rn_isnumber', 'address2_composite', 'kc_offdockterminalservices', 'address1_addressid',
+         'participatesinworkflow', 'statecode', 'address2_addressid', 'kc_lastinterviewdate_date', 'kc_portservices_date', 'shippingmethodcode', 'opendeals_date',
+         'openrevenue_state', 'rn_monitoringdate', 'telephone3', 'openrevenue', 'address2_longitude', 'address1_longitude', 'emailaddress2', 'address1_country',
+         'rn_dokey', 'lastusedincampaign', 'address1_postofficebox', '_modifiedonbehalfby_value', 'preferredappointmenttimecode', 'timespentbymeonemailandmeetings',
+         'address2_name', 'address2_upszone', 'primarysatoriid', 'entityimage_url', 'timezoneruleversionnumber', 'kc_customerstatuscode', 'c4crm_guiduktorganisation',
+         'address1_stateorprovince', '_slaid_value', 'kc_guiduktpayer', 'address2_city', 'address1_upszone', 'stockexchange', 'entityimage', '_preferredserviceid_value',
+         '_masterid_value', 'address2_latitude', 'address2_utcoffset', 'telephone2', 'paymenttermscode', '_territoryid_value', '_modifiedbyexternalparty_value', 'entityimageid',
+         'kc_guiduktline', '_owningteam_value', 'fax', 'stageid', 'utcconversiontimezonecode', 'marketcap_base', 'onholdtime', 'address1_primarycontactname', 'yominame',
+         '_defaultpricelevelid_value', 'ownershipcode', 'address2_telephone2', 'address2_line3', '_createdonbehalfby_value', 'kc_productdescription', '_createdbyexternalparty_value',
+         'kc_inn', 'kc_guiduktclient', 'overriddencreatedon', 'address1_utcoffset', 'primarytwitterid', 'ftpsiteurl', 'sic', 'address1_telephone2', 'tickersymbol',
+         'rn_lastsalesorderdate', 'address1_line2', 'numberofemployees', 'kc_industrycode', 'aging60_base', 'revenue_base', 'openrevenue_base', 'industrycode',
+         'address2_telephone3', 'address1_line3', 'address1_latitude', 'address1_telephone1', 'accountnumber', 'entityimage_timestamp', '_preferredsystemuserid_value',
+         'kc_guidisrclient', 'address2_postalcode', 'kc_guidisrorganisation', 'preferredappointmentdaycode', 'kc_kpp', 'processid', 'creditlimit_base', 'address2_stateorprovince',
+         '_kc_managerretentionid_value', 'kc_rate', 'emailaddress3', 'importsequencenumber', '_slainvokedid_value', 'aging90', 'sharesoutstanding', 'opendeals_state', 'kc_ogrn',
+         'address1_shippingmethodcode', 'kc_fixingmanagerdate', 'address2_county', 'description', 'kc_guidisrpayer', 'aging60', 'marketcap', 'accountcategorycode', 'aging30_base', 'address1_name',
+         'opendeals', 'aging30', 'address1_addresstypecode', 'address1_fax', 'traversedpath', '_parentaccountid_value', 'address1_freighttermscode', 'address2_telephone1', 'address1_telephone3',
+         'kc_guiduktorganisation', 'address1_postalcode', '_preferredequipmentid_value', 'rn_status', 'kc_lastinterviewdate', 'address2_fax', 'lastonholdtime', 'kc_okpo', 'customertypecode',
+         '_kc_whobroughtid_value', 'kc_firstsalesorderdate', 'creditlimit', 'aging90_base', 'address2_country', 'address1_county', 'address2_line2', 'revenue', 'rn_uid', 'address2_primarycontactname',
+         'address2_postofficebox', 'address1_city'
+        )
+
 def main():
     print_keys = False
     crm_cient = CrmClient()
@@ -183,5 +221,9 @@ def main():
     businessunits = Businessunits(crm_cient)
     businessunits.save_to_csv(print_keys=print_keys)
     businessunits.move_files()
+
+    account = Account(crm_cient)
+    account.save_to_csv(print_keys=print_keys)
+    account.move_files()
 if __name__ == "__main__":
 	main()
