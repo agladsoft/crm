@@ -9,7 +9,7 @@ declare -a TablesArray=(
     "rn_stagehistories"
     "systemusers"
     "businessunits"
-    "account"
+    "accounts"
 )
 
 csv_path="${XL_IDP_PATH_CRM}"
