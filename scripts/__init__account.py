@@ -232,10 +232,22 @@ HEADERS_ENG: dict = {
 
 
 LIST_OF_FLOAT_TYPE: list = [
-    "exchangerate"
+    "exchangerate",
+    "revenue_base"
 ]
 LIST_OF_BOOL_TYPE: list = [
     "trx_phone_calls_recording",
+    "kc_provider",
+    "kc_competitor",
+    "kc_sendtoukt",
+    "marketingonly",
+    "rn_clientmonitoring",
+    "kc_line",
+    "rn_haslead",
+    "donotbulkpostalmail",
+    "creditonhold",
+    "kc_ruscon",
+    "rn_isnumber",
     "donotbulkemail",
     "donotsendmm",
     "donotpostalmail",
@@ -248,6 +260,27 @@ LIST_OF_BOOL_TYPE: list = [
 ]
 LIST_OF_INT_TYPE: list = [
     "statecode",
+    "kc_lastinterviewdate_state",
+    "territorycode",
+    "kc_auto_state",
+    "accountratingcode",
+    "accountclassificationcode",
+    "kc_firstsalesorderdate_state",
+    "customersizecode",
+    "kc_offdockterminalservices_state",
+    "kc_quantityinterview_state",
+    "kc_train_state",
+    "kc_portservices_state",
+    "address2_freighttermscode",
+    "kc_opfcode",
+    "kc_internationalcarriage_state",
+    "kc_customsservices_state",
+    "businesstypecode",
+    "rn_lastsalesorderdate_state",
+    "kc_quantityinterview",
+    "shippingmethodcode",
+    "importsequencenumber",
+    "rn_status",
     "statuscode",
     "versionnumber",
     "kc_customsservices",
@@ -256,7 +289,6 @@ LIST_OF_INT_TYPE: list = [
     "kc_portservices",
     "kc_auto",
     "timezoneruleversionnumber",
-    "kc_inn",
     "kc_internationalcarriage",
     "kc_offdockterminalservices",
     "preferredcontactmethodcode",
@@ -270,5 +302,22 @@ LIST_OF_INT_TYPE: list = [
 ]
 LIST_OF_DATE_TYPE: list = [
     "createdon",
-    "modifiedon"
+    "modifiedon",
+    "kc_customsservices_date",
+    "kc_firstsalesorderdate_date",
+    "rn_lastsalesorderdate_date",
+    "openrevenue_date",
+    "kc_train_date",
+    "kc_auto_date",
+    "kc_internationalcarriage_date",
+    "kc_quantityinterview_date",
+    "kc_offdockterminalservices_date",
+    "kc_lastinterviewdate_date",
+    "kc_portservices_date",
+    "opendeals_date",
+    "rn_monitoringdate",
+    "rn_lastsalesorderdate",
+    "kc_fixingmanagerdate",
+    "kc_lastinterviewdate",
+    "kc_firstsalesorderdate"
 ]
