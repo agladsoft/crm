@@ -1,6 +1,6 @@
 import os
 import sys
-from __init__opportunity_sales_processes import *
+from __init__opportunitysalesprocesses import *
 from rn_stagehistories import RnStagehistories
 
 
