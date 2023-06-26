@@ -10,8 +10,8 @@ declare -a TablesArray=(
     "systemusers"
     "businessunits"
     "accounts"
-    "opportunity_sales_processes"
-    "proces_stages"
+    "opportunitysalesprocesses"
+    "processstages"
     "teams"
 )
 
