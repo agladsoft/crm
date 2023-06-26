@@ -18,7 +18,8 @@ LIST_OF_BOOL_TYPE: list = [
 
 ]
 LIST_OF_INT_TYPE: list = [
-    "versionnumber"
+    "versionnumber",
+    "stagecategory"
 ]
 LIST_OF_DATE_TYPE: list = [
 

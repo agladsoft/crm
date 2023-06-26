@@ -35,11 +35,13 @@ LIST_OF_FLOAT_TYPE: list = [
     "exchangerate"
 ]
 LIST_OF_BOOL_TYPE: list = [
-
+    "systemmanaged",
+    "isdefault",
 ]
 LIST_OF_INT_TYPE: list = [
     "versionnumber",
-    "importsequencenumber"
+    "importsequencenumber",
+    "teamtype"
 ]
 LIST_OF_DATE_TYPE: list = [
     "createdon",

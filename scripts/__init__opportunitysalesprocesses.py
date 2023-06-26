@@ -38,9 +38,12 @@ LIST_OF_INT_TYPE: list = [
     "statecode",
     "statuscode",
     "versionnumber",
-    "importsequencenumber"
+    "importsequencenumber",
+    "duration"
 ]
 LIST_OF_DATE_TYPE: list = [
+    "activestagestartedon",
     "modifiedon",
-    "createdon"
+    "createdon",
+    "completedon"
 ]
