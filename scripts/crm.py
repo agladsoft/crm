@@ -31,7 +31,7 @@ class RemoteEntity(ABC):
 
     @property
     def csv_file(self):
-        return f'{self.data_root_path}\{self.pattern}.csv'
+        return f'{self.data_root_path}/{self.pattern}.csv'
 
     @property
     def url(self):
