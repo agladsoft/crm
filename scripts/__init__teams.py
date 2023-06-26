@@ -38,8 +38,6 @@ LIST_OF_BOOL_TYPE: list = [
 
 ]
 LIST_OF_INT_TYPE: list = [
-    "statecode",
-    "statuscode",
     "versionnumber",
     "importsequencenumber"
 ]
