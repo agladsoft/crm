@@ -109,7 +109,7 @@ class RnStagehistories(object):
         """
         parsed_data: list = self.convert_csv_to_dict()
         divided_parsed_data: list = list(self.divide_chunks(parsed_data, 50000))
-        # self.delete_all_data_from_db(file)
+        self.delete_all_data_from_db(file)
         for index, chunk_parsed_data in enumerate(divided_parsed_data):
             for dict_data in chunk_parsed_data:
                 self.change_type(dict_data)
