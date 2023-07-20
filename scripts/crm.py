@@ -200,13 +200,15 @@ class Opportunity(RemoteEntity):
             'decisionmaker', 'kc_sendtoukt', 'isrevenuesystemcalculated', '_transactioncurrencyid_value',
             'kc_potencialprofitperunit', '_owninguser_value', 'totalamount', 'presentproposal', 'createdon',
             'kc_potencialteu', '_ownerid_value', 'sendthankyounote', 'identifycustomercontacts', 'stageid',
-            'traversedpath', 'rn_lastactivitydate_date', 'evaluatefit', 'totalamountlessfreight',
-            'kc_potencialamountwithvat', 'totallineitemdiscountamount', 'totalamountlessfreight_base',
-            'totaldiscountamount', 'processid', 'statuscode', 'kc_potencialamount', 'totaltax_base',
-            'totallineitemamount_base', 'totalamount_base', 'developproposal', 'versionnumber', 'description',
-            'modifiedon', 'resolvefeedback', 'totaltax', 'totaldiscountamount_base', 'rn_lastactivitydate_state',
-            '_modifiedby_value', 'presentfinalproposal', '_createdby_value', 'pricingerrorcode', 'salesstagecode',
-            'totallineitemdiscountamount_base', 'identifypursuitteam', 'participatesinworkflow',
+            'traversedpath',
+            'rn_lastactivitydate_date', 'evaluatefit', 'totalamountlessfreight', 'kc_potencialamountwithvat',
+            'totallineitemdiscountamount', 'totalamountlessfreight_base', 'totaldiscountamount', 'processid',
+            'statuscode', 'kc_potencialamount', 'totaltax_base', 'totallineitemamount_base', 'totalamount_base',
+            'developproposal', 'versionnumber',
+            'description', 'modifiedon', 'resolvefeedback', 'totaltax', 'totaldiscountamount_base',
+            'rn_lastactivitydate_state', '_modifiedby_value', 'presentfinalproposal', '_createdby_value',
+            'pricingerrorcode', 'salesstagecode', 'totallineitemdiscountamount_base', 'identifypursuitteam',
+            'participatesinworkflow',
             'statecode', '_owningbusinessunit_value', 'pursuitdecision', 'opportunityratingcode', '_customerid_value',
             'totallineitemamount', 'completefinalproposal', 'schedulefollowup_prospect', 'kc_loststatuscode',
             'actualvalue', 'freightamount', 'kc_projectnumber', 'timezoneruleversionnumber',
@@ -220,7 +222,8 @@ class Opportunity(RemoteEntity):
             'schedulefollowup_qualify', 'customerneed', 'overriddencreatedon', '_accountid_value', 'finaldecisiondate',
             'estimatedvalue', '_campaignid_value', 'kc_plandateapplication', '_slaid_value', 'discountamount_base',
             'kc_guidisr', 'purchasetimeframe', 'budgetamount_base', 'qualificationcomments', '_createdonbehalfby_value',
-            'currentsituation', 'customerpainpoints', 'scheduleproposalmeeting', 'initialcommunication', 'timeline'
+            'currentsituation', 'customerpainpoints', 'scheduleproposalmeeting', 'initialcommunication', 'timeline',
+            'rn_lastorderdate'
         )
 
 
@@ -411,20 +414,6 @@ class Teams(RemoteEntity):
 
 
 def main():
-    print_keys = False
-    crm_cient = CrmClient()
-    StageHistory(crm_cient).save_to_csv(print_keys=print_keys)
-    GapPowerbiOption(crm_cient).save_to_csv(print_keys=print_keys)
-    Lead(crm_cient).save_to_csv(print_keys=print_keys)
-    Interview(crm_cient).save_to_csv(print_keys=print_keys)
-    Opportunity(crm_cient).save_to_csv(print_keys=print_keys)
-    Systemuser(crm_cient).save_to_csv(print_keys=print_keys)
-    Businessunits(crm_cient).save_to_csv(print_keys=print_keys)
-    Account(crm_cient).save_to_csv(print_keys=print_keys)
-    OpportunitySalesProcesses(crm_cient).save_to_csv(print_keys=print_keys)
-    ProcesStages(crm_cient).save_to_csv(print_keys=print_keys)
-    Teams(crm_cient).save_to_csv(print_keys=print_keys)
-
     print_keys = False
     crm_cient = CrmClient()
 
