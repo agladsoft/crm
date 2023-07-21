@@ -186,6 +186,7 @@ LIST_OF_INT_TYPE: list = [
 ]
 LIST_OF_DATE_TYPE: list = [
     "rn_lastactivitydate",
+    "rn_lastorderdate",
     "createdon",
     "rn_lastactivitydate_date",
     "modifiedon",
