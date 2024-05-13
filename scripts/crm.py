@@ -359,7 +359,7 @@ class Account(RemoteEntity):
             'kc_lastinterviewdate', 'address2_fax', 'lastonholdtime', 'kc_okpo', 'customertypecode',
             '_kc_whobroughtid_value', 'kc_firstsalesorderdate', 'creditlimit', 'aging90_base', 'address2_country',
             'address1_county', 'address2_line2', 'revenue', 'rn_uid', 'address2_primarycontactname',
-            'address2_postofficebox', 'address1_city'
+            'address2_postofficebox', 'address1_city', 'rn_accountsource'
         )
 
 
