@@ -74,6 +74,7 @@ class RnStagehistories(object):
         """
         Csv data representation in json.
         """
+        logger.info(f"File is {self.filename}")
         df: DataFrame = read_csv(self.filename, low_memory=False, dtype=str, delimiter=';')
         df.replace({np.NAN: None}, inplace=True)
         self.rename_columns(df)
