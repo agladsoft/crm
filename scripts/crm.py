@@ -13,7 +13,8 @@ class CrmClient(object):
     def baseurl(self):
         return 'http://srvr-mscrm.first/Ruscon/api/data/v8.2/'
 
-    def get_auth(self):
+    @staticmethod
+    def get_auth():
         return HttpNtlmAuth('first\\request', 'Edc789')
 
 
@@ -36,15 +37,16 @@ class RemoteEntity(ABC):
 
     @property
     def url(self):
-        return '%s%s' % (self.crm_client.baseurl, self.pattern)
+        return f'{self.crm_client.baseurl}{self.pattern}'
 
-    def modifier(self, value):
+    @staticmethod
+    def modifier(value):
         return value
 
     def get_dto_row(self, row, header):
         dto_row = row.copy()
         for field_dto in iter(row.keys()):
-            if not field_dto in header:
+            if field_dto not in header:
                 del dto_row[field_dto]
             else:
                 dto_row[field_dto] = self.modifier(dto_row[field_dto])
@@ -61,7 +63,6 @@ class RemoteEntity(ABC):
         if r.status_code != 200:
             raise Exception(f'Код ответа {r.status_code}')
         data = r.json()
-        value = data['value']
         if "value" not in data:
             raise Exception('В ответе нет ключа value')
         value = data['value']
