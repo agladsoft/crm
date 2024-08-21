@@ -1,10 +1,11 @@
-from dataclasses import dataclass
-import requests
-from requests_ntlm import HttpNtlmAuth
-import csv
-from pathlib import Path
 import os
+import csv
+import requests
 from abc import ABC
+from pathlib import Path
+from typing import Any, List
+from dataclasses import dataclass
+from requests_ntlm import HttpNtlmAuth
 
 
 class CrmClient(object):
@@ -55,13 +56,13 @@ class RemoteEntity(ABC):
             each_file.rename(trg_path.joinpath(each_file.name))
 
     def save_to_csv(self, all_fields=False, next_link=None, write_mode='w', print_keys=False):
-        url = next_link if next_link else self.url
+        url = next_link or self.url
         r = requests.get(url, auth=self.crm_client.get_auth())
         if r.status_code != 200:
             raise Exception(f'Код ответа {r.status_code}')
         data = r.json()
         value = data['value']
-        if not 'value' in data:
+        if "value" not in data:
             raise Exception('В ответе нет ключа value')
         value = data['value']
         keys = value[0].keys()
@@ -415,51 +416,25 @@ class Teams(RemoteEntity):
 
 def main():
     print_keys = False
-    crm_cient = CrmClient()
+    crm_client = CrmClient()
 
-    stage_history = StageHistory(crm_cient)
-    stage_history.save_to_csv(print_keys=print_keys)
-    stage_history.move_files()
-
-    gap_powerbi_option = GapPowerbiOption(crm_cient)
-    gap_powerbi_option.save_to_csv(print_keys=print_keys)
-    gap_powerbi_option.move_files()
-
-    lead = Lead(crm_cient)
-    lead.save_to_csv(print_keys=print_keys)
-    lead.move_files()
-
-    interview = Interview(crm_cient)
-    interview.save_to_csv(print_keys=print_keys)
-    interview.move_files()
-
-    opportunity = Opportunity(crm_cient)
-    opportunity.save_to_csv(print_keys=print_keys)
-    opportunity.move_files()
-
-    systemuser = Systemuser(crm_cient)
-    systemuser.save_to_csv(print_keys=print_keys)
-    systemuser.move_files()
-
-    businessunits = Businessunits(crm_cient)
-    businessunits.save_to_csv(print_keys=print_keys)
-    businessunits.move_files()
-
-    account = Account(crm_cient)
-    account.save_to_csv(print_keys=print_keys)
-    account.move_files()
-
-    opportunity_sales_processes = OpportunitySalesProcesses(crm_cient)
-    opportunity_sales_processes.save_to_csv(print_keys=print_keys)
-    opportunity_sales_processes.move_files()
-
-    proces_stages = ProcesStages(crm_cient)
-    proces_stages.save_to_csv(print_keys=print_keys)
-    proces_stages.move_files()
-
-    teams = Teams(crm_cient)
-    teams.save_to_csv(print_keys=print_keys)
-    teams.move_files()
+    classes: List[Any] = [
+        StageHistory,
+        GapPowerbiOption,
+        Lead,
+        Interview,
+        Opportunity,
+        Systemuser,
+        Businessunits,
+        Account,
+        OpportunitySalesProcesses,
+        ProcesStages,
+        Teams
+    ]
+    for class_ in classes:
+        obj_class = class_(crm_client)
+        obj_class.save_to_csv(print_keys=print_keys)
+        obj_class.move_files()
 
 
 if __name__ == "__main__":
