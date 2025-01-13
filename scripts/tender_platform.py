@@ -1,15 +1,15 @@
 import os
 import sys
-from settings_teams import *
+from settings_tender_platform import *
 from rn_stagehistories import RnStagehistories
 
 
-class Teams(RnStagehistories):
+class TenderPlatform(RnStagehistories):
     pass
 
 
 if __name__ == "__main__":
-    teams: Teams = Teams(
+    tender_platform: TenderPlatform = TenderPlatform(
         os.path.abspath(sys.argv[1]),
         sys.argv[2],
         HEADERS_ENG,
@@ -18,4 +18,4 @@ if __name__ == "__main__":
         LIST_OF_INT_TYPE,
         LIST_OF_DATE_TYPE
     )
-    teams.main(__file__)
+    tender_platform.main(__file__)

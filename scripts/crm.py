@@ -406,6 +406,22 @@ class Teams(RemoteEntity):
         )
 
 
+class TenderPlatform(RemoteEntity):
+    @property
+    def pattern(self):
+        return 'rn_tenderplatforms'
+
+    @property
+    def header(self):
+        return (
+            '@odata.etag', '_owningbusinessunit_value', 'statecode', 'statuscode', '_createdby_value', 'rn_name',
+            '_ownerid_value', 'rn_tenderplatformid', '_modifiedby_value', '_owninguser_value',
+            'createdon', 'versionnumber', 'modifiedon', 'timezoneruleversionnumber', 'overriddencreatedon',
+            '_modifiedonbehalfby_value', 'importsequencenumber', 'utcconversiontimezonecode', '_owningteam_value',
+            '_createdonbehalfby_value'
+        )
+
+
 def main():
     print_keys = False
     crm_client = CrmClient()
@@ -421,7 +437,8 @@ def main():
         Account,
         OpportunitySalesProcesses,
         ProcesStages,
-        Teams
+        Teams,
+        TenderPlatform
     ]
     for class_ in classes:
         obj_class = class_(crm_client)
