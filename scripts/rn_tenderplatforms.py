@@ -4,12 +4,12 @@ from settings_tender_platform import *
 from rn_stagehistories import RnStagehistories
 
 
-class TenderPlatform(RnStagehistories):
+class RnTenderPlatforms(RnStagehistories):
     pass
 
 
 if __name__ == "__main__":
-    tender_platform: TenderPlatform = TenderPlatform(
+    rn_tenderplatforms: RnTenderPlatforms = RnTenderPlatforms(
         os.path.abspath(sys.argv[1]),
         sys.argv[2],
         HEADERS_ENG,
@@ -18,4 +18,4 @@ if __name__ == "__main__":
         LIST_OF_INT_TYPE,
         LIST_OF_DATE_TYPE
     )
-    tender_platform.main(__file__)
+    rn_tenderplatforms.main(__file__)
