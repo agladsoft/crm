@@ -13,7 +13,7 @@ declare -a TablesArray=(
     "opportunitysalesprocesses"
     "processstages"
     "teams",
-    "tender_platform"
+    "rn_tenderplatforms"
 )
 
 csv_path="${XL_IDP_PATH_CRM}"
