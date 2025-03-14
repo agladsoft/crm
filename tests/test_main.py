@@ -4,10 +4,21 @@ import pandas as pd
 from pathlib import Path
 from scripts.main import CRM
 from unittest.mock import patch
+from scripts.leads import Leads
+from scripts.teams import Teams
+from scripts.accounts import Accounts
+from scripts.systemusers import Systemusers
+from scripts.processstages import ProcesStages
+from scripts.kc_interviews import KcInterviews
+from scripts.businessunits import Businessunits
+from scripts.opportunities import Opportunities
+from scripts.rn_stagehistories import RnStagehistories
+from scripts.gap_powerbioptionsetrefs import GapPowerbioptionsetrefs
+from scripts.opportunitysalesprocesses import OpportunitySalesProcesses
 
 
 @pytest.fixture
-def sample_csv(tmp_path):
+def sample_csv(tmp_path: Path):
     file_path: Path = tmp_path / "test.csv"
     data: str = """col1;col2;col3\n1;2;3\n4;5;6\n7;8;9"""
     file_path.write_text(data)
@@ -18,8 +29,140 @@ def headers_eng():
     return {("col1",): "column1", ("col2",): "column2", ("col3",): "column3"}
 
 @pytest.fixture
-def crm(sample_csv, tmp_path, headers_eng):
+def crm(sample_csv: str, tmp_path: Path, headers_eng: dict):
     return CRM(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def accounts(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return Accounts(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def businessunits(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return Businessunits(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def gap_powerbioptionsetrefs(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return GapPowerbioptionsetrefs(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def kc_interviews(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return KcInterviews(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def leads(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return Leads(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def opportunities(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return Opportunities(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def opportunitysalesprocesses(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return OpportunitySalesProcesses(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def processstages(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return ProcesStages(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def rn_stagehistories(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return RnStagehistories(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def systemusers(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return Systemusers(
+        sample_csv,
+        str(tmp_path),
+        headers_eng,
+        [],
+        [],
+        [],
+        []
+    )
+
+@pytest.fixture
+def teams(sample_csv: str, tmp_path: Path, headers_eng: dict):
+    return Teams(
         sample_csv,
         str(tmp_path),
         headers_eng,

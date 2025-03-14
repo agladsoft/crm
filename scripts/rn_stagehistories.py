@@ -1,7 +1,7 @@
 import os
 import sys
 from scripts.main import CRM
-from scripts.schema_accounts import *
+from scripts.schema_rn_stagehistories import *
 
 
 class RnStagehistories(CRM):
