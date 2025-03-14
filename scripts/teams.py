@@ -1,6 +1,6 @@
 import os
 import sys
-from __init__teams import *
+from schema_teams import *
 from rn_stagehistories import RnStagehistories
 
 

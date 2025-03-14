@@ -73,7 +73,7 @@ class RemoteEntity(ABC):
         if write_mode == 'w' and os.path.exists(self.csv_file):
             os.remove(self.csv_file)
         with open(self.csv_file, write_mode, encoding='utf-8', newline='') as f:
-            w = csv.DictWriter(f, header, delimiter=";", quoting=csv.QUOTE_NONNUMERIC)
+            w = csv.DictWriter(f, header, delimiter=";", quoting=csv.QUOTE_NONNUMERIC)  # type: ignore
             if write_mode == 'w':
                 w.writeheader()
             for row in value:
