@@ -18,18 +18,18 @@ from scripts.opportunitysalesprocesses import OpportunitySalesProcesses
 
 
 @pytest.fixture
-def sample_csv(tmp_path: Path):
+def sample_csv(tmp_path: Path) -> str:
     file_path: Path = tmp_path / "test.csv"
     data: str = """col1;col2;col3\n1;2;3\n4;5;6\n7;8;9"""
     file_path.write_text(data)
     return str(file_path)
 
 @pytest.fixture
-def headers_eng():
+def headers_eng() -> dict:
     return {("col1",): "column1", ("col2",): "column2", ("col3",): "column3"}
 
 @pytest.fixture
-def crm(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def crm(sample_csv: str, tmp_path: Path, headers_eng: dict) -> CRM:
     return CRM(
         sample_csv,
         str(tmp_path),
@@ -41,7 +41,7 @@ def crm(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def accounts(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def accounts(sample_csv: str, tmp_path: Path, headers_eng: dict) -> Accounts:
     return Accounts(
         sample_csv,
         str(tmp_path),
@@ -53,7 +53,7 @@ def accounts(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def businessunits(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def businessunits(sample_csv: str, tmp_path: Path, headers_eng: dict) -> Businessunits:
     return Businessunits(
         sample_csv,
         str(tmp_path),
@@ -65,7 +65,7 @@ def businessunits(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def gap_powerbioptionsetrefs(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def gap_powerbioptionsetrefs(sample_csv: str, tmp_path: Path, headers_eng: dict) -> GapPowerbioptionsetrefs:
     return GapPowerbioptionsetrefs(
         sample_csv,
         str(tmp_path),
@@ -77,7 +77,7 @@ def gap_powerbioptionsetrefs(sample_csv: str, tmp_path: Path, headers_eng: dict)
     )
 
 @pytest.fixture
-def kc_interviews(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def kc_interviews(sample_csv: str, tmp_path: Path, headers_eng: dict) -> KcInterviews:
     return KcInterviews(
         sample_csv,
         str(tmp_path),
@@ -89,7 +89,7 @@ def kc_interviews(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def leads(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def leads(sample_csv: str, tmp_path: Path, headers_eng: dict) -> Leads:
     return Leads(
         sample_csv,
         str(tmp_path),
@@ -101,7 +101,7 @@ def leads(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def opportunities(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def opportunities(sample_csv: str, tmp_path: Path, headers_eng: dict) -> Opportunities:
     return Opportunities(
         sample_csv,
         str(tmp_path),
@@ -113,7 +113,7 @@ def opportunities(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def opportunitysalesprocesses(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def opportunitysalesprocesses(sample_csv: str, tmp_path: Path, headers_eng: dict) -> OpportunitySalesProcesses:
     return OpportunitySalesProcesses(
         sample_csv,
         str(tmp_path),
@@ -125,7 +125,7 @@ def opportunitysalesprocesses(sample_csv: str, tmp_path: Path, headers_eng: dict
     )
 
 @pytest.fixture
-def processstages(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def processstages(sample_csv: str, tmp_path: Path, headers_eng: dict) -> ProcesStages:
     return ProcesStages(
         sample_csv,
         str(tmp_path),
@@ -137,7 +137,7 @@ def processstages(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def rn_stagehistories(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def rn_stagehistories(sample_csv: str, tmp_path: Path, headers_eng: dict) -> RnStagehistories:
     return RnStagehistories(
         sample_csv,
         str(tmp_path),
@@ -149,7 +149,7 @@ def rn_stagehistories(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def systemusers(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def systemusers(sample_csv: str, tmp_path: Path, headers_eng: dict) -> Systemusers:
     return Systemusers(
         sample_csv,
         str(tmp_path),
@@ -161,7 +161,7 @@ def systemusers(sample_csv: str, tmp_path: Path, headers_eng: dict):
     )
 
 @pytest.fixture
-def teams(sample_csv: str, tmp_path: Path, headers_eng: dict):
+def teams(sample_csv: str, tmp_path: Path, headers_eng: dict) -> Teams:
     return Teams(
         sample_csv,
         str(tmp_path),
