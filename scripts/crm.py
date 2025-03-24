@@ -225,7 +225,7 @@ class Opportunity(RemoteEntity):
             'estimatedvalue', '_campaignid_value', 'kc_plandateapplication', '_slaid_value', 'discountamount_base',
             'kc_guidisr', 'purchasetimeframe', 'budgetamount_base', 'qualificationcomments', '_createdonbehalfby_value',
             'currentsituation', 'customerpainpoints', 'rn_lastorderdate', 'scheduleproposalmeeting',
-            'initialcommunication', 'timeline'
+            'initialcommunication', 'timeline', 'rn_tenderconclusion', 'rn_tenderresult'
         )
 
 
