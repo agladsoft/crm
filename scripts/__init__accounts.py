@@ -321,4 +321,3 @@ LIST_OF_DATE_TYPE: list = [
     "kc_lastinterviewdate",
     "kc_firstsalesorderdate"
 ]
-
