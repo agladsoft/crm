@@ -9,7 +9,7 @@ import numpy as np
 from __init__ import *
 from typing import Generator
 from pandas import DataFrame, read_csv
-from __init__rn_stagehistories import *
+from settings_rn_stagehistories import *
 from clickhouse_connect import get_client
 
 
@@ -119,7 +119,13 @@ class RnStagehistories(object):
 
 
 if __name__ == "__main__":
-    rn_stagehistories: RnStagehistories = RnStagehistories(os.path.abspath(sys.argv[1]), sys.argv[2], HEADERS_ENG,
-                                                           LIST_OF_FLOAT_TYPE, LIST_OF_BOOL_TYPE, LIST_OF_INT_TYPE,
-                                                           LIST_OF_DATE_TYPE)
+    rn_stagehistories: RnStagehistories = RnStagehistories(
+        os.path.abspath(sys.argv[1]),
+        sys.argv[2],
+        HEADERS_ENG,
+        LIST_OF_FLOAT_TYPE,
+        LIST_OF_BOOL_TYPE,
+        LIST_OF_INT_TYPE,
+        LIST_OF_DATE_TYPE
+    )
     rn_stagehistories.main(__file__)
