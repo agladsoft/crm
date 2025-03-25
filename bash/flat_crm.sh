@@ -12,7 +12,7 @@ declare -a TablesArray=(
     "accounts"
     "opportunitysalesprocesses"
     "processstages"
-    "teams",
+    "teams"
     "rn_tenderplatforms"
 )
 
